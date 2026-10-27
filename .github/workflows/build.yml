@@ -5,24 +5,18 @@ jobs:
     runs-on: macos-14
     steps:
     - uses: actions/checkout@v4
-
-    - name: Select Xcode 16.2
-      run: |
-        sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer || \
-        sudo xcode-select -s /Applications/Xcode_16.1.app/Contents/Developer
-
+    
     - name: Install XcodeGen
       run: brew install xcodegen
 
     - name: Generate Project
       run: xcodegen generate
 
-    - name: Fix Project Format
+    - name: Fix Version
       run: |
         PBX="NexusCustomizer.xcodeproj/project.pbxproj"
         if [ -f "$PBX" ]; then
           sed -i '' 's/objectVersion = 77;/objectVersion = 60;/g' "$PBX"
-          sed -i '' 's/objectVersion = 70;/objectVersion = 60;/g' "$PBX"
         fi
 
     - name: Build App
@@ -32,6 +26,7 @@ jobs:
           -scheme NexusCustomizer \
           -sdk iphoneos \
           -configuration Release \
+          SWIFT_OPTIMIZATION_LEVEL="-Onone" \
           CODE_SIGNING_ALLOWED=NO
 
     - name: Package IPA
