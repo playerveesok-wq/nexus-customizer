@@ -2,7 +2,6 @@ import SwiftUI
 import PhotosUI
 import Observation
 
-@MainActor
 @Observable
 final class WallpapersViewModel {
     private(set) var items: [WallpaperItem] = []
