@@ -1,5 +1,5 @@
 import SwiftUI
-
+import UIKit
 struct WallpaperPreviewView: View {
     let item: WallpaperItem
     let isSelected: Bool
