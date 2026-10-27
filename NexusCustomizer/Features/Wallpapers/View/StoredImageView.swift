@@ -1,5 +1,5 @@
 import SwiftUI
-
+import UIKit
 struct StoredImageView: View {
     let item: WallpaperItem
     let maxPixel: CGFloat
