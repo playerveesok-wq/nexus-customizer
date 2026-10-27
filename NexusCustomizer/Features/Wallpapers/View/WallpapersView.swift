@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct WallpapersView: View {
-    @Bindable var vm: WallpapersViewModel
+    var vm: WallpapersViewModel
     @State private var showPicker = false
     @State private var previewItem: WallpaperItem?
 
