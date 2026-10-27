@@ -1,5 +1,6 @@
 import SwiftUI
 import UIKit
+import Observation
 struct WallpaperPreviewView: View {
     let item: WallpaperItem
     let isSelected: Bool
