@@ -125,7 +125,7 @@ actor WallpaperStore {
     private func saveIndex() throws {
         do {
             let data = try JSONEncoder().encode(Index(items: items))
-            try data.write(to: indexURL, options: [.atomic, .completeFileProtectionUntilFirstUserAuthentication])
+            try data.write(to: indexURL, options: [.atomic]) // Исправленная строка
         } catch { throw WallpaperError.io(error) }
     }
 
