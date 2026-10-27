@@ -9,35 +9,26 @@ jobs:
   build:
     runs-on: macos-14
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
-        
+
       - name: Install XcodeGen
         run: brew install xcodegen
-        
-      - name: Generate Xcode Project
+
+      - name: Generate Project
         run: xcodegen generate
-        
-      - name: Build App
+
+      - name: Build
         run: |
-          xcodebuild build \
-            -project NexusCustomizer.xcodeproj \
-            -scheme NexusCustomizer \
-            -configuration Release \
-            -sdk iphoneos \
-            -destination 'generic/platform=iOS' \
-            -derivedDataPath build \
-            CODE_SIGNING_ALLOWED=NO \
-            CODE_SIGNING_REQUIRED=NO \
-            CODE_SIGN_IDENTITY=""
-            
+          xcodebuild build -project NexusCustomizer.xcodeproj -scheme NexusCustomizer -sdk iphoneos -configuration Release CODE_SIGNING_ALLOWED=NO
+
       - name: Package IPA
         run: |
-          mkdir -p Payload
+          mkdir Payload
           cp -R build/Build/Products/Release-iphoneos/NexusCustomizer.app Payload/
-          zip -qry NexusCustomizer.ipa Payload
-          
-      - name: Upload Artifact
+          zip -r NexusCustomizer.ipa Payload
+
+      - name: Upload
         uses: actions/upload-artifact@v4
         with:
           name: NexusCustomizer-ipa
