@@ -26,6 +26,7 @@ jobs:
           -scheme NexusCustomizer \
           -sdk iphoneos \
           -configuration Release \
+          -derivedDataPath build \
           SWIFT_OPTIMIZATION_LEVEL="-Onone" \
           CODE_SIGNING_ALLOWED=NO
 
