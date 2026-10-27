@@ -1,5 +1,5 @@
 import SwiftUI
-
+import UIKit
 struct AnimatedImageView: UIViewRepresentable {
     let image: UIImage
 
