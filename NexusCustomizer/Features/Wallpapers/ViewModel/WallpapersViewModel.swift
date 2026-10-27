@@ -1,6 +1,6 @@
 import SwiftUI
 import PhotosUI
-import Observation // <--- ДОБАВИТЬ ЭТО
+import Observation
 
 @MainActor
 @Observable
