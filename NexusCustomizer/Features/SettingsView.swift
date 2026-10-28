@@ -253,8 +253,9 @@ struct SettingsView: View {
                 ForEach(NexusAppIcon.allCases) { icon in
                     let isSelected = iconManager.currentIcon == icon
                     Button {
-                        iconManager.setIcon(icon)
-                    } label: {
+                           Task { @MainActor in
+                            iconManager.setIcon(icon)
+                        }
                         HStack(spacing: 14) {
                             RoundedRectangle(cornerRadius: 12, style: .continuous)
                                 .fill(icon.previewColor.gradient)
