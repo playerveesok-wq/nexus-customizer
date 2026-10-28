@@ -250,7 +250,7 @@ struct SettingsView: View {
                 .textCase(.uppercase)
             
             VStack(spacing: 10) {
-                ForEach(NexusAppIcon.allCases) { icon in
+              ForEach(NexusAppIcon.allCases, id: \.self) { icon in
                     let isSelected = iconManager.currentIcon == icon
                     Button {
                            Task { @MainActor in
